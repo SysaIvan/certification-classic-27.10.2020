@@ -18,4 +18,13 @@ jQuery(function ($) {
 	demo();
 	const page = new CatalogPage();
 	page.init();
+
+	window.onpopstate = (ev) => {
+		console.log(ev.state, page.loadedPages, page.loadedPages[ev.state.page]);
+
+		$('#body').html(page.loadedPages[ev.state.page]);
+
+		const newPage = new CatalogPage();
+		newPage.init();
+	};
 });
