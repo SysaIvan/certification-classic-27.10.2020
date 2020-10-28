@@ -1,0 +1,26 @@
+.pagination {
+	display: flex;
+	justify-content: center;
+
+	&__item {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		min-width: microbe-rem(30);
+		height: microbe-rem(30);
+		color: $color-text-dark;
+		text-decoration: none;
+		font-size: microbe-rem(18);
+		transition: color 0.3s;
+
+		&[href] {
+			&:hover {
+				color: $color-primary-light;
+			}
+		}
+
+		& + & {
+			margin-left: microbe-rem(4);
+		}
+	}
+}

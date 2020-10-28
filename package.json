@@ -34,6 +34,7 @@
     "from-cwd": "^1.0.1",
     "html-webpack-plugin": "^4.5.0",
     "jquery": "^3.5.1",
+    "lodash.get": "^4.4.2",
     "microbe-ui": "^2.1.0",
     "mini-css-extract-plugin": "^1.2.1",
     "optimize-css-assets-webpack-plugin": "^5.0.4",

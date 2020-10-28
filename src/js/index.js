@@ -8,6 +8,7 @@ import jQuery from 'js#/lib/jquery';
 import 'sass#/style.scss';
 // scripts
 import { demo } from 'js#/modules/demo-module';
+import { CatalogPage } from 'js#/modules/CatalogPage';
 
 // -----------------------------------------------------------------------------
 // Initialize
@@ -15,4 +16,6 @@ import { demo } from 'js#/modules/demo-module';
 
 jQuery(function ($) {
 	demo();
+	const page = new CatalogPage();
+	page.init();
 });
