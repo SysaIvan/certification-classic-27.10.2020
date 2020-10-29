@@ -48,6 +48,7 @@ export class CatalogPage {
         });
 
 
+        console.log(window.location);
         history.pushState({ data: this.data }, '', window.location.origin + '?' + queryStrArr.join('&'));
     }
 
