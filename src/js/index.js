@@ -15,7 +15,6 @@ import { CatalogPage } from 'js#/modules/CatalogPage';
 // -----------------------------------------------------------------------------
 
 jQuery(function ($) {
-	console.log(window.location);
 	demo();
 	const page = new CatalogPage();
 	page.init();
