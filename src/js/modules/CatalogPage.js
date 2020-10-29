@@ -216,17 +216,15 @@ export class CatalogPage {
             const els = this.$filter.find(`[name="${key}"]`);
             if (els && els.length > 1) {
                 if ($(els[0]).attr('type') === 'checkbox') {
-                    if (Array.isArray(val)) {
-                        val.forEach((value) => {
-                            this.$filter.find(`[name="${key}"][value="${value}"]`).prop('checked', true);
-                        });
-                    } else {
-                        this.$filter.find(`[name="${key}"][value="${val}"]`).prop('checked', true);
-                    }
+                    els.each((i, el) => {
+                        const $el = $(el)
+                        $el.prop('checked', val.includes($el.val()))
+                    })
                 }
             } else if (els && els.attr('type') === 'checkbox') {
                 this.$filter.find(`[name="${key}"][value="${val}"]`).prop('checked', true);
             } else if (els) {
+                console.log(val);
                 els.val(val);
             }
         });
@@ -246,6 +244,7 @@ export class CatalogPage {
         window.onpopstate = (ev) => {
             this.data = ev.state.data;
             this.updatePage(this.server.findAll(this.data));
+            this.updateControls();
         };
     }
 }
