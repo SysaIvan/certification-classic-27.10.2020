@@ -50,7 +50,7 @@ export class LikeServer {
 	pagination(pagination, data) {
 		const sortedData = this.sorting(pagination, data);
 		const totalPages = Math.round(sortedData.length / pagination.perPage);
-		const needData = sortedData.splice(
+		const needData = sortedData.slice(
 			pagination.page === 1 ? 0 : pagination.perPage * (pagination.page - 1),
 			pagination.page === 1
 				? pagination.perPage

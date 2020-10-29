@@ -8,12 +8,14 @@
 		align-items: center;
 		min-width: microbe-rem(30);
 		height: microbe-rem(30);
-		color: $color-text-dark;
+		color: $color-primary-light;
 		text-decoration: none;
 		font-size: microbe-rem(18);
 		transition: color 0.3s;
 
 		&[href] {
+			color: $color-text-dark;
+
 			&:hover {
 				color: $color-primary-light;
 			}
