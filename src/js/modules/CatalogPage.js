@@ -206,26 +206,29 @@ export class CatalogPage {
             }
         });
 
+        this.$filter.serializeArray().forEach((field) => {
+            if (field.name === 'price-from' || field.name === 'price-to' || field.name === 'perPage' || field.name === 'sort') {
+                return;
+            }
+
+            const els = this.$filter.find(`[name="${field.name}"]`);
+            if (els && els.length > 1) {
+                if ($(els[0]).attr('type') === 'checkbox') {
+                    els.each((i, el) => {
+                        const $el = $(el);
+                        $el.prop('checked', this.data.params[field.name] && this.data.params[field.name].includes($el.val()));
+                    });
+                }
+            } else if (els) {
+                els.val(this.data.params[field.name] || '' );
+            }
+        });
+
         Object.entries(this.data.params).forEach(([key, val]) => {
             if (key === 'price' && this.data.params.price.length) {
                 this.$filter.find(`[name="price-from"]`).val(this.data.params.price[0]);
                 this.$filter.find(`[name="price-to"]`).val(this.data.params.price[1]);
                 return;
-            }
-
-            const els = this.$filter.find(`[name="${key}"]`);
-            if (els && els.length > 1) {
-                if ($(els[0]).attr('type') === 'checkbox') {
-                    els.each((i, el) => {
-                        const $el = $(el)
-                        $el.prop('checked', val.includes($el.val()))
-                    })
-                }
-            } else if (els && els.attr('type') === 'checkbox') {
-                this.$filter.find(`[name="${key}"][value="${val}"]`).prop('checked', true);
-            } else if (els) {
-                console.log(val);
-                els.val(val);
             }
         });
     }
