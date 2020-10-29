@@ -47,9 +47,7 @@ export class CatalogPage {
             }
         });
 
-
-        console.log(window.location);
-        history.pushState({ data: this.data }, '', window.location.origin + '?' + queryStrArr.join('&'));
+        history.pushState({ data: this.data }, '', window.location.origin + window.location.pathname + '?' + queryStrArr.join('&'));
     }
 
     updateData() {
